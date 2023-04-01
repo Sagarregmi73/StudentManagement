@@ -1,9 +1,12 @@
 package com.studentmanagement.core.repository.service;
 
-import com.studentmanagement.core.model.Student;
+import java.util.List;
+
+import com.studentmanagement.core.model.User;
 
 public interface UserService {
-void userSignup(Student student);
-Student userLogin(String username,String password);
+void userSignup(User user);
+User userLogin(String username,String password);
+List <User> getUser();
 
 }

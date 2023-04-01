@@ -49,4 +49,12 @@ public String getApplyApplication(HttpSession session) {
 	}
 	return "applyApplication";
 }
+	@GetMapping("/addStudentDetail")
+public String getaddStudentDetail(HttpSession session) {
+	if(session.getAttribute("activeuser")== null ) {
+		return "index";
+	}
+	return "AddStudentDetail";
+}
+	
 }
