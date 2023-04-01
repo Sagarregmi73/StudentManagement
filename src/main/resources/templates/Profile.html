@@ -21,7 +21,7 @@
       </div>
     </section>
      
-    <section class="site-section bg-light">
+    <section class="site-section bg-light" th:each="stu:${stuDetails}">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-5 box">
@@ -30,7 +30,7 @@
 					<div class="row m-2">
 					<div class="col-4">FatherName</div>
 					<div class="col-6">
-						[[${session.activeuser.fathername}]]
+						[[${stu.fathername}]]
 					
 				</div>
 				</div>
@@ -38,7 +38,7 @@
 				<div class="row m-2">
 					<div class="col-4">Phone</div>
 					<div class="col-6">
-						[[${session.activeuser.phone}]]
+						[[${stu.phone}]]
 					
 				</div>
 				</div>
@@ -46,7 +46,7 @@
 				<div class="row m-2">
 					<div class="col-4">Gender</div>
 					<div class="col-6">
-						[[${session.activeuser.gender}]]
+						[[${stu.gender}]]
 					
 				</div>
 				</div>
@@ -54,7 +54,7 @@
 				<div class="row m-2">
 					<div class="col-4">Department</div>
 					<div class="col-6">
-						[[${session.activeuser.department}]]
+						[[${stu.department}]]
 					
 				</div>
 				</div>
@@ -62,7 +62,7 @@
 				<div class="row m-2">
 					<div class="col-4">DOB</div>
 					<div class="col-6">
-						[[${session.activeuser.dob}]]
+						[[${stu.dob}]]
 					
 				</div>
 				</div>
@@ -70,7 +70,7 @@
 				<div class="row m-2">
 					<div class="col-4">JoinDate</div>
 					<div class="col-6">
-						[[${session.activeuser.joindate}]]
+						[[${stu.joindate}]]
 					
 				</div>
 				</div>
@@ -78,7 +78,7 @@
 				<div class="row m-2">
 					<div class="col-4">Country</div>
 					<div class="col-6">
-						[[${session.activeuser.address.country}]]
+						[[${stu.address.country}]]
 					
 				</div>
 				</div>
@@ -86,7 +86,7 @@
 				<div class="row m-2">
 					<div class="col-4">City</div>
 					<div class="col-6">
-						[[${session.activeuser.address.city}]]
+						[[${stu.address.city}]]
 					
 				</div>
 				</div>
@@ -94,7 +94,7 @@
 				<div class="row m-2">
 					<div class="col-4">State</div>
 					<div class="col-6">
-						[[${session.activeuser.address.state}]]
+						[[${stu.address.state}]]
 					
 				</div>
 				</div>
@@ -102,7 +102,7 @@
 				<div class="row m-2">
 					<div class="col-4">ZipCode</div>
 					<div class="col-6">
-						[[${session.activeuser.address.zipCode}]]
+						[[${stu.address.zipCode}]]
 					
 				</div>
 				</div>

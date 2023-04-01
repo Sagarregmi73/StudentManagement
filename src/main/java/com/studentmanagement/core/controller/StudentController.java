@@ -4,12 +4,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.studentmanagement.core.model.Student;
 import com.studentmanagement.core.repository.service.StudentService;
+import com.studentmanagement.core.repository.service.UserService;
 
 
 @Controller
@@ -45,10 +47,11 @@ public String getFees(HttpSession session) {
 	return "Fees";
 }
 	@GetMapping("/profile")
-public String getProfile(HttpSession session) {
+public String getProfile(HttpSession session,Model model) {
 	if(session.getAttribute("activeuser")== null ) {
 		return "index";
 	}
+	model.addAttribute("stuDetails", studentService.getStudentDetails());
 	return "Profile";
 }
 	@GetMapping("/applyApplication")
@@ -68,16 +71,12 @@ public String getaddStudentDetail(HttpSession session) {
 	
 	@PostMapping("/addStudentDetail")
 	public String postaddStudentDetail(@ModelAttribute Student student,HttpSession session) {
-		Student stu=studentService.getStudentDetails();
-if(stu!=null) {
-			
-			session.setAttribute("activestudent", stu);
-			session.setMaxInactiveInterval(200);
-			
-			//model.addAttribute("uname",usr.getFname());
+		if(session.getAttribute("activeuser")== null ) {
 			return "index";
 		}
+		
 		studentService.addStudentDetail(student);
+	
 		return "AddStudentDetail";
 	}
 	
