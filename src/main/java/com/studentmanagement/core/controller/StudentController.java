@@ -68,7 +68,13 @@ public String getaddStudentDetail(HttpSession session) {
 	
 	@PostMapping("/addStudentDetail")
 	public String postaddStudentDetail(@ModelAttribute Student student,HttpSession session) {
-		if(session.getAttribute("activeuser")== null ) {
+		Student stu=studentService.getStudentDetails();
+if(stu!=null) {
+			
+			session.setAttribute("activestudent", stu);
+			session.setMaxInactiveInterval(200);
+			
+			//model.addAttribute("uname",usr.getFname());
 			return "index";
 		}
 		studentService.addStudentDetail(student);
