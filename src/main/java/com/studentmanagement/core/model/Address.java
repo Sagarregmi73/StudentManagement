@@ -12,6 +12,10 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String country;
+	private String city;
+	private String state;
+	private String zipCode;
 	public int getId() {
 		return id;
 	}
@@ -42,8 +46,5 @@ public class Address {
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
-	private String country;
-	private String city;
-	private String state;
-	private String zipCode;
+	
 }

@@ -3,11 +3,12 @@ package com.studentmanagement.core.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.studentmanagement.core.model.Student;
 import com.studentmanagement.core.repository.StudentRepository;
 import com.studentmanagement.core.repository.service.StudentService;
-
+@Service
 public class StudentServiceImpl implements StudentService{
 @Autowired
 	private StudentRepository studentRepo;
