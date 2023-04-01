@@ -22,8 +22,14 @@ private String fathername;
 private String phone;
 private String gender;
 private String department;
-@DateTimeFormat(pattern = "yyy-MM-dd")
+@DateTimeFormat(pattern = "yyyy-MM-dd")
 private LocalDate dob;
+@DateTimeFormat(pattern = "yyyy-MM-dd")
+private LocalDate joindate;
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name="address_tbl")
+private Address address;
+
 public int getId() {
 	return id;
 }
@@ -72,11 +78,6 @@ public Address getAddress() {
 public void setAddress(Address address) {
 	this.address = address;
 }
-@DateTimeFormat(pattern = "yyy-MM-dd")
-private LocalDate joindate;
-@OneToOne(cascade = CascadeType.ALL)
-@JoinColumn(name="address_tbl")
-private Address address;
 
 
 }

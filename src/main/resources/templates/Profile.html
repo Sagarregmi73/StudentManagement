@@ -20,6 +20,96 @@
         </div>
       </div>
     </section>
+    
+    <section class="site-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-5 box">
+					<h2 class="mb-5">Student Details</h2>
+
+					<div class="row m-2">
+					<div class="col-4">FatherName</div>
+					<div class="col-6">
+						[[${session.activeuser.fathername}]]
+					
+				</div>
+				</div>
+				
+				<div class="row m-2">
+					<div class="col-4">Phone</div>
+					<div class="col-6">
+						[[${session.activeuser.phone}]]
+					
+				</div>
+				</div>
+				
+				<div class="row m-2">
+					<div class="col-4">Gender</div>
+					<div class="col-6">
+						[[${session.activeuser.gender}]]
+					
+				</div>
+				</div>
+				
+				<div class="row m-2">
+					<div class="col-4">Department</div>
+					<div class="col-6">
+						[[${session.activeuser.department}]]
+					
+				</div>
+				</div>
+				
+				<div class="row m-2">
+					<div class="col-4">DOB</div>
+					<div class="col-6">
+						[[${session.activeuser.dob}]]
+					
+				</div>
+				</div>
+				
+				<div class="row m-2">
+					<div class="col-4">JoinDate</div>
+					<div class="col-6">
+						[[${session.activeuser.joindate}]]
+					
+				</div>
+				</div>
+				
+				<div class="row m-2">
+					<div class="col-4">Country</div>
+					<div class="col-6">
+						[[${session.activeuser.address.country}]]
+					
+				</div>
+				</div>
+				
+				<div class="row m-2">
+					<div class="col-4">City</div>
+					<div class="col-6">
+						[[${session.activeuser.address.city}]]
+					
+				</div>
+				</div>
+				
+				<div class="row m-2">
+					<div class="col-4">State</div>
+					<div class="col-6">
+						[[${session.activeuser.address.state}]]
+					
+				</div>
+				</div>
+				
+				<div class="row m-2">
+					<div class="col-4">ZipCode</div>
+					<div class="col-6">
+						[[${session.activeuser.address.zipCode}]]
+					
+				</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</section>
     <!-- END section -->
     <div th:insert="footer.html" ></div>
    

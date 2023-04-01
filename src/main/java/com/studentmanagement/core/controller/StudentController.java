@@ -2,11 +2,20 @@ package com.studentmanagement.core.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.studentmanagement.core.model.Student;
+import com.studentmanagement.core.repository.service.StudentService;
+
 
 @Controller
 public class StudentController {
+	@Autowired
+	private StudentService studentService;
 	@GetMapping("/home")
 public String getHome(HttpSession session) {
 	if(session.getAttribute("activeuser")== null ) {
@@ -56,5 +65,14 @@ public String getaddStudentDetail(HttpSession session) {
 	}
 	return "AddStudentDetail";
 }
+	
+	@PostMapping("/addStudentDetail")
+	public String postaddStudentDetail(@ModelAttribute Student student,HttpSession session) {
+		if(session.getAttribute("activeuser")== null ) {
+			return "index";
+		}
+		studentService.addStudentDetail(student);
+		return "AddStudentDetail";
+	}
 	
 }
