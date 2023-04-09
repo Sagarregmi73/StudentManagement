@@ -18,7 +18,9 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 private int id;
+ 
 private String fathername;
+
 private String phone;
 private String gender;
 private String department;

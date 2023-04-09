@@ -16,6 +16,7 @@ public class StudentServiceImpl implements StudentService{
 	public void addStudentDetail(Student student) {
 		// TODO Auto-generated method stub
 		studentRepo.save(student);
+	
 	}
 
 	@Override
@@ -39,4 +40,15 @@ public class StudentServiceImpl implements StudentService{
 		return studentRepo.findAll();
 	}
 
+	@Override
+	public Student getStudentById(int id) {
+		// TODO Auto-generated method stub
+		return studentRepo.getById(id);
+	}
+
+	
+
+
+
+	
 }

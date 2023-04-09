@@ -8,5 +8,5 @@ public interface UserService {
 void userSignup(User user);
 User userLogin(String username,String password);
 List <User> getUser();
-
+User getUserById(int id);
 }

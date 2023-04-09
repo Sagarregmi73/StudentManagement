@@ -20,12 +20,45 @@
         </div>
       </div>
     </section>
-     
-    <section class="site-section bg-light" th:each="stu:${stuDetails}">
+     <section class="site-section bg-light" th:each="usr:${userObjList}">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-5 box">
 					<h2 class="mb-5">Student Details</h2>
+
+					<div class="row m-2">
+					<div class="col-4">FullName</div>
+					<div class="col-6">
+						[[${usr.fname+" "}]][[${usr.lname}]]
+					
+				</div>
+				</div>
+				
+				<div class="row m-2">
+					<div class="col-4">UserName</div>
+					<div class="col-6">
+						[[${usr.username}]]
+					
+				</div>
+				</div>
+				
+				<div class="row m-2">
+					<div class="col-4">Email</div>
+					<div class="col-6">
+						[[${usr.emailId}]]
+					
+				</div>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+			<section class="site-section bg-light" th:each="stu:${stuDetails}">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-5 box">
+					<h2 class="mb-5">More Details</h2>
 
 					<div class="row m-2">
 					<div class="col-4">FatherName</div>
@@ -110,6 +143,9 @@
 			</div>
 		</div>
 	</section>
+	
+	</section>
+    
     <!-- END section -->
     <div th:insert="footer.html" ></div>
    

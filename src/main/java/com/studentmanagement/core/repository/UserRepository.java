@@ -15,6 +15,7 @@ User findByUsernameAndPassword(String un,String psw);
 User findByUsername(String un);
 
 
+
 @Transactional
 @Modifying
 @Query(value = "UPDATE User SET password = :psw WHERE username = :un")

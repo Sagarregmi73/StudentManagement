@@ -7,9 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.studentmanagement.core.model.Student;
+import com.studentmanagement.core.model.User;
 import com.studentmanagement.core.repository.service.StudentService;
 import com.studentmanagement.core.repository.service.UserService;
 
@@ -18,11 +21,14 @@ import com.studentmanagement.core.repository.service.UserService;
 public class StudentController {
 	@Autowired
 	private StudentService studentService;
+	@Autowired
+	private UserService userService;
 	@GetMapping("/home")
-public String getHome(HttpSession session) {
+public String getHome(HttpSession session,Model model) {
 	if(session.getAttribute("activeuser")== null ) {
 		return "index";
 	}
+
 	return "Home";
 }
 	@GetMapping("/blog")
@@ -47,11 +53,15 @@ public String getFees(HttpSession session) {
 	return "Fees";
 }
 	@GetMapping("/profile")
-public String getProfile(HttpSession session,Model model) {
+public String getProfile(@RequestParam int id,HttpSession session,Model model) {
 	if(session.getAttribute("activeuser")== null ) {
+		
 		return "index";
 	}
-	model.addAttribute("stuDetails", studentService.getStudentDetails());
+	model.addAttribute("stuDetails", studentService.getStudentById(id));
+	model.addAttribute("userObjList", userService.getUserById(id));
+	model.addAttribute("stuList", studentService.getStudentDetails());
+	
 	return "Profile";
 }
 	@GetMapping("/applyApplication")
@@ -61,23 +71,8 @@ public String getApplyApplication(HttpSession session) {
 	}
 	return "applyApplication";
 }
-	@GetMapping("/addStudentDetail")
-public String getaddStudentDetail(HttpSession session) {
-	if(session.getAttribute("activeuser")== null ) {
-		return "index";
-	}
-	return "AddStudentDetail";
-}
 	
-	@PostMapping("/addStudentDetail")
-	public String postaddStudentDetail(@ModelAttribute Student student,HttpSession session) {
-		if(session.getAttribute("activeuser")== null ) {
-			return "index";
-		}
-		
-		studentService.addStudentDetail(student);
 	
-		return "AddStudentDetail";
-	}
+
 	
 }

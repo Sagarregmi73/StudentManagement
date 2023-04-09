@@ -33,6 +33,12 @@ public class UserServiceImpl implements UserService {
 		return userRepo.findAll();
 	}
 
+	@Override
+	public User getUserById(int id) {
+		// TODO Auto-generated method stub
+		return userRepo.getById(id);
+	}
+
 
 
 }
