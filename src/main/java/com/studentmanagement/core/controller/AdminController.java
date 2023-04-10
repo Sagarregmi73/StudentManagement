@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.studentmanagement.core.model.Student;
+import com.studentmanagement.core.model.User;
 import com.studentmanagement.core.repository.UserRepository;
 import com.studentmanagement.core.repository.service.StudentService;
 import com.studentmanagement.core.repository.service.UserService;
@@ -85,11 +86,12 @@ public class AdminController {
 	}
 	
 	@PostMapping("/controller/admin/updateStudentDetail")
-	public String updateStudentDetail(@ModelAttribute Student student,HttpSession session,Model model) {
+	public String updateStudentDetail(@ModelAttribute User user,HttpSession session,Model model) {
 		if(session.getAttribute("adminlogin")== null ) {
 			return "AdminLogin";
 		}
-		studentService.updateStudentDetail(student);
+		//studentService.updateStudentDetail(student);
+		userService.updateUserDetail(user);
 	//	model.addAttribute("message", "updated succesfully");
 		return "redirect:/controller/admin/studentDetail";
 	}

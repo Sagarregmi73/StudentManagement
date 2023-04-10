@@ -58,7 +58,7 @@ public String getProfile(@RequestParam int id,HttpSession session,Model model) {
 		
 		return "index";
 	}
-	model.addAttribute("stuDetails", studentService.getStudentById(id));
+	//model.addAttribute("stuDetails", studentService.getStudentById(id));
 	model.addAttribute("userObjList", userService.getUserById(id));
 	
 	return "Profile";
