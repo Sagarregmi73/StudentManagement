@@ -110,27 +110,27 @@ public class AdminController {
 		}
 		
 		model.addAttribute("userObjList",userService.getUserById(id));
-		model.addAttribute("studentObjList",studentService.getStudentById(id) );
+//		model.addAttribute("studentObjList", studentService.getStudentById(id));
 		return "editStudentDetails";
 	}
 
-	@GetMapping("/controller/admin/add")
-	public String addMoreDetail(HttpSession session) {
-		if(session.getAttribute("adminlogin")==null) {
-			return "AdminLogin";
-		}
-		
-		return "AddStudentDetails";
-	}
-	
-
-	@PostMapping("/controller/admin/add")
-	
-	public String addMoreDetail(@ModelAttribute Student student,HttpSession session) {
-		if(session.getAttribute("adminlogin")==null) {
-			return "AdminLogin";
-		}
-		studentService.addStudentDetail(student);
-		return "redirect:/controller/admin/studentDetail";
-	}
+//	@GetMapping("/controller/admin/add")
+//	public String addMoreDetail(HttpSession session) {
+//		if(session.getAttribute("adminlogin")==null) {
+//			return "AdminLogin";
+//		}
+//		
+//		return "AddStudentDetails";
+//	}
+//	
+//
+//	@PostMapping("/controller/admin/add")
+//	
+//	public String addMoreDetail(@ModelAttribute Student student,HttpSession session) {
+//		if(session.getAttribute("adminlogin")==null) {
+//			return "AdminLogin";
+//		}
+//		studentService.addStudentDetail(student);
+//		return "redirect:/controller/admin/studentDetail";
+//	}
 }
