@@ -86,12 +86,12 @@ public class AdminController {
 	}
 	
 	@PostMapping("/controller/admin/updateStudentDetail")
-	public String updateStudentDetail(@ModelAttribute User user,HttpSession session,Model model) {
+	public String updateStudentDetail(@ModelAttribute Student student,HttpSession session,Model model) {
 		if(session.getAttribute("adminlogin")== null ) {
 			return "AdminLogin";
 		}
-		//studentService.updateStudentDetail(student);
-		userService.updateUserDetail(user);
+		studentService.updateStudentDetail(student);
+		//userService.updateUserDetail(user);
 	//	model.addAttribute("message", "updated succesfully");
 		return "redirect:/controller/admin/studentDetail";
 	}
