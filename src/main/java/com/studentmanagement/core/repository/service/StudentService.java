@@ -10,6 +10,8 @@ void addStudentDetail(Student student);
 void deleteStudentDetail(int id);
 void updateStudentDetail(Student student);
 List <Student> getStudentDetails();
+
 Student getStudentById(int id);
+
 
 }

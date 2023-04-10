@@ -23,6 +23,10 @@ public class User {
 	private String password;
 	private String emailId;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="student_tbl")
+	private Student student;
+	
 
 	public int getId() {
 		return id;
@@ -59,6 +63,12 @@ public class User {
 	}
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
+	}
+	public Student getStudent() {
+		return student;
+	}
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 	
 	
