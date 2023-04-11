@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.studentmanagement.core.model.Student;
 import com.studentmanagement.core.model.User;
+import com.studentmanagement.core.repository.StudentRepository;
 import com.studentmanagement.core.repository.UserRepository;
 import com.studentmanagement.core.repository.service.StudentService;
 import com.studentmanagement.core.repository.service.UserService;
@@ -21,6 +22,8 @@ import com.studentmanagement.core.repository.service.UserService;
 public class AdminController {
 	@Autowired
 	private StudentService studentService;
+	@Autowired
+	private StudentRepository studentRepo;
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -86,12 +89,12 @@ public class AdminController {
 	}
 	
 	@PostMapping("/controller/admin/updateStudentDetail")
-	public String updateStudentDetail(@ModelAttribute Student student,HttpSession session,Model model) {
+	public String updateStudentDetail(@ModelAttribute User user,HttpSession session,Model model) {
 		if(session.getAttribute("adminlogin")== null ) {
 			return "AdminLogin";
 		}
-		studentService.updateStudentDetail(student);
-		//userService.updateUserDetail(user);
+		//studentService.updateStudentDetail(student);
+		userRepo.save(user);
 	//	model.addAttribute("message", "updated succesfully");
 		return "redirect:/controller/admin/studentDetail";
 	}
@@ -112,7 +115,7 @@ public class AdminController {
 		}
 		
 		model.addAttribute("userObjList",userService.getUserById(id));
-//		model.addAttribute("studentObjList", studentService.getStudentById(id));
+//model.addAttribute("studentObjList", studentService.getStudentById(id));
 		return "editStudentDetails";
 	}
 

@@ -143,13 +143,13 @@
 							</tr>
 						</thead>
 
-						<tr th:each="usr:${userlist}">
+						<tr th:each="usr:${userlist}" >
 							<td>[[${usr.id}]]</td>
 							<td>[[${usr.fname+" "}]][[${usr.lname}]]</td>
 							<td th:text="${usr.username}"></td>
 							<td th:text="${usr.emailId}"></td>
 
-							<td><a th:href="@{/controller/admin/edit(id=${usr.id})}"><i
+							<td ><a th:href="@{/controller/admin/edit(id=${usr.id})}"><i
 									class="fa-solid fa-pen-to-square"></i></a> <a
 								th:href="@{'/controller/admin/delete/'+${usr.id}}"><i
 									class="fa-solid fa-trash"></i></a>

@@ -20,7 +20,7 @@
         </div>
       </div>
     </section>
-     <section class="site-section bg-light" th:each="usr:${userObjList}">
+     <section class="site-section bg-light" >
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-5 box">
@@ -29,7 +29,7 @@
 					<div class="row m-2">
 					<div class="col-4">FullName</div>
 					<div class="col-6">
-						[[${usr.fname+" "}]][[${usr.lname}]]
+						[[${session.activeuser.fname+" "}]][[${session.activeuser.lname}]]
 					
 				</div>
 				</div>
@@ -37,7 +37,7 @@
 				<div class="row m-2">
 					<div class="col-4">UserName</div>
 					<div class="col-6">
-						[[${usr.username}]]
+						[[${session.activeuser.username}]]
 					
 				</div>
 				</div>
@@ -45,7 +45,7 @@
 				<div class="row m-2">
 					<div class="col-4">Email</div>
 					<div class="col-6">
-						[[${usr.emailId}]]
+						[[${session.activeuser.emailId}]]
 					
 				</div>
 				</div>
@@ -54,6 +54,7 @@
 			
 			
 		</div>
+		
 			<section class="site-section bg-light" th:each="usr:${userObjList}">
 		<div class="container">
 			<div class="row justify-content-center">

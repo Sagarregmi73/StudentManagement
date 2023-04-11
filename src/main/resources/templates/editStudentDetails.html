@@ -115,15 +115,39 @@
 
 
 					<form action="/controller/admin/updateStudentDetail" method="post"
-						th:object="${stuDetails}">
+						th:object="${userObjList}">
 
 						<div class="row">
 
-					
+					<div class="col-md-12 form-group">
+								<label for="fname">First Name</label> <input type="text"
+									id="fname" required th:field="*{fname}"
+									class="form-control ">
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="lname">Last Name</label> <input type="text"
+									id="lname" required th:field="*{lname}"
+									class="form-control ">
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="username">Username</label> <input type="text"
+									id="username" required th:field="*{username}"
+									class="form-control ">
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="password">Password</label> <input type="text"
+									id="password" readonly th:field="*{password}"
+									class="form-control ">
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="emailId">Email</label> <input type="text"
+									id="emailId" required th:field="*{emailId}"
+									class="form-control ">
+							</div>
 
 							<div class="col-md-12 form-group">
 								<label for="fathername">Father Name</label> <input type="text"
-									id="fathername" required th:field="*{fathername}"
+									id="fathername" required th:field="*{student.fathername}"
 									class="form-control ">
 							</div>
 
@@ -131,20 +155,20 @@
 
 							<div class="col-md-12 form-group">
 								<label for="phone">Phone</label> <input type="number" id="phone"
-									required th:field="*{phone}" class="form-control ">
+									required th:field="*{student.phone}" class="form-control ">
 
 							</div>
 
 
 							<div class="col-md-12 form-group">
-								<input type="radio" th:field="*{gender}" value="male">Male
-								<input type="radio" th:field="*{gender}" value="female">Female
+								<input type="radio" th:field="*{student.gender}" value="male">Male
+								<input type="radio" th:field="*{student.gender}" value="female">Female
 							</div>
 
 
 							<div class="col-md-12 form-group">
 								<label for="department">Department</label> <input type="text"
-									id="department" required th:field="*{department}"
+									id="department" required th:field="*{student.department}"
 									class="form-control ">
 
 							</div>
@@ -152,20 +176,20 @@
 
 							<div class="col-md-12 form-group">
 								<label for="dob">DOB</label> <input type="date" required
-									th:field="*{dob}" class="form-control">
+									th:field="*{student.dob}" class="form-control">
 
 							</div>
 
 
 							<div class="col-md-12 form-group">
 								<label for="joindate">JoinDate</label> <input type="date"
-									required th:field="*{joindate}" class="form-control">
+									required th:field="*{student.joindate}" class="form-control">
 							</div>
 
 
 							<div class="col-md-12 form-group">
 								<label for="country">Country</label> <input type="text"
-									id="country" required th:field="*{address.country}"
+									id="country" required th:field="*{student.address.country}"
 									class="form-control ">
 
 							</div>
@@ -173,7 +197,7 @@
 
 							<div class="col-md-12 form-group">
 								<label for="city">City</label> <input type="text" id="city"
-									required th:field="*{address.city}"
+									required th:field="*{student.address.city}"
 									class="form-control ">
 
 							</div>
@@ -182,7 +206,7 @@
 
 							<div class="col-md-12 form-group">
 								<label for="state">State</label> <input type="text" id="state"
-									required th:field="*{address.state}"
+									required th:field="*{student.address.state}"
 									class="form-control ">
 							</div>
 
@@ -191,7 +215,7 @@
 
 							<div class="col-md-12 form-group">
 								<label for="zipcode">ZipCode</label> <input type="number"
-									id="zipcode" required th:field="*{address.zipCode}"
+									id="zipcode" required th:field="*{student.address.zipCode}"
 									class="form-control ">
 
 							</div>
@@ -203,6 +227,8 @@
 
 							<input type="hidden" th:field="*{id}" /> <input type="hidden"
 								th:field="*{student.address.id}" /> 
+								<input type="hidden"
+								th:field="*{student.id}" /> 
 
 
 						</div>

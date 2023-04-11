@@ -1,5 +1,6 @@
 package com.studentmanagement.core.repository.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.studentmanagement.core.model.Student;
@@ -11,5 +12,5 @@ User userLogin(String username,String password);
 List <User> getUser();
 
 User getUserById(int id);
-void updateUserDetail(User user);
+
 }
