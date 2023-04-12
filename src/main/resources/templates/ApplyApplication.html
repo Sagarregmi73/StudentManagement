@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
   <head>
-    <title>Apply Applocation</title>
+    <title>Apply Application</title>
     <meta charset="utf-8">
     
   </head>
@@ -16,6 +16,36 @@
             <div class="mb-5 element-animate">
               <h1>Apply Application</h1>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+    
+     <section class="site-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-5 box">
+            <h2 class="mb-5">Apply Application</h2>
+                    <h5 style="color:green;">[[${message}]]</h5>
+            <form action="/applyApplication" method="post" >
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="message">Message</label>
+                      <textarea rows="5" cols="30" required name="message" class="form-control "></textarea>
+                      
+                    </div>
+                  </div>
+                  
+                 
+                  
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <input type="submit" value="Apply" class="btn btn-primary">
+                    </div>
+                     
+                  </div>
+                </form>
           </div>
         </div>
       </div>

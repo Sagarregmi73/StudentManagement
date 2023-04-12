@@ -11,14 +11,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.studentmanagement.core.Application;
+import com.studentmanagement.core.model.Applyapplication;
 import com.studentmanagement.core.model.Student;
 import com.studentmanagement.core.model.User;
+import com.studentmanagement.core.repository.ApplicationRepository;
+import com.studentmanagement.core.repository.StudentRepository;
+import com.studentmanagement.core.repository.UserRepository;
+import com.studentmanagement.core.repository.service.ApplicationService;
 import com.studentmanagement.core.repository.service.StudentService;
 import com.studentmanagement.core.repository.service.UserService;
 
 
 @Controller
 public class StudentController {
+	@Autowired
+	private ApplicationService appService;
+	@Autowired
+	private UserRepository userRepo;
 	@Autowired
 	private StudentService studentService;
 	@Autowired
@@ -71,6 +81,18 @@ public String getApplyApplication(HttpSession session) {
 	}
 	return "applyApplication";
 }
+	
+	@PostMapping("/applyApplication")
+	public String postApplyApplication(@RequestParam int id,@RequestParam String message ,HttpSession session) {
+		if(session.getAttribute("activeuser")== null ) {
+			return "index";
+		}
+		
+		
+		return "applyApplication";
+		
+		
+	}
 	
 	
 

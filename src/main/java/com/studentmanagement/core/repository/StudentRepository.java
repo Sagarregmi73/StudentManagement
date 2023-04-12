@@ -11,6 +11,8 @@ import com.studentmanagement.core.model.User;
 
 public interface StudentRepository extends JpaRepository<Student,Integer> {
 
+	
+
 
 	
 }

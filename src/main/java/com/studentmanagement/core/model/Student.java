@@ -17,8 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-private int id;
- 
+private int id; 
 private String fathername;
 
 private String phone;
@@ -31,7 +30,17 @@ private LocalDate joindate;
 @OneToOne(cascade = CascadeType.ALL)
 @JoinColumn(name="address_tbl")
 private Address address;
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name="Application_tbl")
+private Applyapplication applyapplication;
 
+
+public Applyapplication getApplyapplication() {
+	return applyapplication;
+}
+public void setApplyapplication(Applyapplication applyapplication) {
+	this.applyapplication = applyapplication;
+}
 public int getId() {
 	return id;
 }
@@ -80,6 +89,7 @@ public Address getAddress() {
 public void setAddress(Address address) {
 	this.address = address;
 }
+
 
 
 }
