@@ -1,7 +1,8 @@
+
 <!doctype html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
-<title>AdminDashboard</title>
+<title>Edit Student Detail Form</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -67,10 +68,10 @@
 							</div></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/controller/admin/profile">Admin Profile</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Add
+								Notification</a></li>
 
-
-						<li class="nav-item"><a class="nav-link"
-							href="/controller/admin/applicationMessage">Application
+						<li class="nav-item"><a class="nav-link" href="#">Application
 								Message</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/controller/admin/studentDetail">Student Details</a></li>
@@ -90,30 +91,163 @@
 	</header>
 	<!-- END header -->
 
-	<section class="site-hero overlay" data-stellar-background-ratio="0.5"
-		style="background-image: url(/masterlogin/images/big_image_1.jpg);">
+	<section class="site-hero site-hero-innerpage overlay"
+		data-stellar-background-ratio="0.5"
+		style="background-image: url(images/big_image_1.jpg);">
 		<div class="container">
 			<div
 				class="row align-items-center site-hero-inner justify-content-center">
 				<div class="col-md-8 text-center">
 
 					<div class="mb-5 element-animate">
-						<h1>Learn From Doing</h1>
-						<p class="lead">Learn something new every day with skwela
-							lorem ipsum dolor sit amet.</p>
-						<p>
-							<a href="#" class="btn btn-primary">Sign up and get a 7-day
-								free trial</a>
-						</p>
+						<h1>Edit Student Detail Form</h1>
 					</div>
-
-
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- END section -->
 
+	<section class="site-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-5 box">
+					<h2 class="mb-5">Student Details</h2>
+
+
+					<form action="/controller/admin/updateStudentDetail" method="post"
+						th:object="${userObjList}">
+
+						<div class="row">
+
+					<div class="col-md-12 form-group">
+								<label for="fname">First Name</label> <input type="text"
+									id="fname" required th:field="*{fname}"
+									class="form-control ">
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="lname">Last Name</label> <input type="text"
+									id="lname" required th:field="*{lname}"
+									class="form-control ">
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="username">Username</label> <input type="text"
+									id="username" required th:field="*{username}"
+									class="form-control ">
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="password">Password</label> <input type="text"
+									id="password" readonly th:field="*{password}"
+									class="form-control ">
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="emailId">Email</label> <input type="text"
+									id="emailId" required th:field="*{emailId}"
+									class="form-control ">
+							</div>
+
+							<div class="col-md-12 form-group">
+								<label for="fathername">Father Name</label> <input type="text"
+									id="fathername" required th:field="*{student.fathername}"
+									class="form-control ">
+							</div>
+
+
+
+							<div class="col-md-12 form-group">
+								<label for="phone">Phone</label> <input type="number" id="phone"
+									required th:field="*{student.phone}" class="form-control ">
+
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<input type="radio" th:field="*{student.gender}" value="male">Male
+								<input type="radio" th:field="*{student.gender}" value="female">Female
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<label for="department">Department</label> <input type="text"
+									id="department" required th:field="*{student.department}"
+									class="form-control ">
+
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<label for="dob">DOB</label> <input type="date" required
+									th:field="*{student.dob}" class="form-control">
+
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<label for="joindate">JoinDate</label> <input type="date"
+									required th:field="*{student.joindate}" class="form-control">
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<label for="country">Country</label> <input type="text"
+									id="country" required th:field="*{student.address.country}"
+									class="form-control ">
+
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<label for="city">City</label> <input type="text" id="city"
+									required th:field="*{student.address.city}"
+									class="form-control ">
+
+							</div>
+
+
+
+							<div class="col-md-12 form-group">
+								<label for="state">State</label> <input type="text" id="state"
+									required th:field="*{student.address.state}"
+									class="form-control ">
+							</div>
+
+
+
+
+							<div class="col-md-12 form-group">
+								<label for="zipcode">ZipCode</label> <input type="number"
+									id="zipcode" required th:field="*{student.address.zipCode}"
+									class="form-control ">
+
+							</div>
+							
+							<div class="col-md-12 form-group">
+								<label for="Applicationref">ApplicationrefId</label> <input type="number"
+									id="Applicationref" required th:field="*{student.Applyapplication.Applicationref}"
+									class="form-control ">
+
+							</div>
+							
+
+
+							<div class="col-md-6 form-group">
+								<input type="submit" value="update" class="btn btn-primary">
+							</div>
+
+							<input type="hidden" th:field="*{id}" /> <input type="hidden"
+								th:field="*{student.address.id}" /> 
+								<input type="hidden"
+								th:field="*{student.id}" /> 
+
+
+						</div>
+				
+				</form>
+
+			</div>
+		</div>
+		</div>
+	</section>
+	<!-- END section -->
 
 	<footer class="site-footer"
 		style="background-image: url(/masterlogin/images/big_image_3.jpg);">
@@ -198,3 +332,7 @@
 	<script src="/masterlogin/js/main.js"></script>
 </body>
 </html>
+
+
+
+

@@ -61,12 +61,12 @@
                 <a class="nav-link" href="/blog">Blog</a>
               </li>
              
+              
               <li class="nav-item">
-                <a class="nav-link" href="/notification">Notification</a>
+                <a class="nav-link" th:href="@{/fees(id=${session.activeuser.id})}">Fees</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/fees">Fees</a>
-              </li>
+             
+            
               <li class="nav-item"  >
                 <a class="nav-link"  th:href="@{/profile(id=${session.activeuser.id})}">Profile</a>
               </li>

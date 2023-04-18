@@ -11,15 +11,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import com.studentmanagement.core.model.Student;
 import com.studentmanagement.core.model.User;
+
 import com.studentmanagement.core.repository.StudentRepository;
 import com.studentmanagement.core.repository.UserRepository;
+import com.studentmanagement.core.repository.service.MessageFeedbackService;
 import com.studentmanagement.core.repository.service.StudentService;
 import com.studentmanagement.core.repository.service.UserService;
 
 @Controller
 public class AdminController {
+
 	@Autowired
 	private StudentService studentService;
 	@Autowired
@@ -28,10 +32,15 @@ public class AdminController {
 	private UserService userService;
 	@Autowired
 	private UserRepository userRepo;
-	@GetMapping("/controller/login/admin")
-	public String getAdminLogin() {
+	@Autowired
+	private MessageFeedbackService messageService;
 
-		return "AdminLogin";
+	@GetMapping("/controller/login/admin")
+	public String getAdminLogin(HttpSession session) {
+		if (session.getAttribute("adminlogin") == null) {
+			return "AdminLogin";
+		}
+		return "AdminDashboard";
 	}
 
 	@PostMapping("/controller/login/admin")
@@ -50,8 +59,6 @@ public class AdminController {
 				model.addAttribute("message", "invalid User");
 				return "AdminLogin";
 	}
-
-		
 
 
 	@GetMapping("/controller/admin/profile")
@@ -105,6 +112,8 @@ public class AdminController {
 		}
 		userRepo.deleteById(id);
 		studentService.deleteStudentDetail(id);
+		messageService.deleteMessageFeedback(id);
+		
 		return "redirect:/controller/admin/studentDetail";
 	}
 	
@@ -115,10 +124,56 @@ public class AdminController {
 		}
 		
 		model.addAttribute("userObjList",userService.getUserById(id));
+	
 //model.addAttribute("studentObjList", studentService.getStudentById(id));
 		return "editStudentDetails";
 	}
 
+	@GetMapping("/controller/admin/applicationMessage")
+public String getApplicationMessage(HttpSession session,Model model) {
+		if(session.getAttribute("adminlogin")==null) {
+			return "AdminLogin";
+		}
+	
+		model.addAttribute("messageObjList", messageService.getMessageFeedback());
+	return "ApplicationMessage";
+}
+	
+
+	@PostMapping("/controller/admin/applicationMessage")
+public String postApplicationMessage(@RequestParam String applicationApprove,@RequestParam String applicationref,HttpSession session,Model model) {
+		if(session.getAttribute("adminlogin")==null) {
+			return "AdminLogin";
+		}
+	
+	
+	return "ApplicationMessage";
+	}
+	
+	
+	@GetMapping("/controller/admin/feedback")
+public String getFeedbackDetails(@RequestParam int id,HttpSession session,Model model) {
+		if(session.getAttribute("adminlogin")==null) {
+			return "AdminLogin";
+		}
+	model.addAttribute("userObj",userService.getUserById(id));
+	
+	return "feedbackForm";
+}
+	
+	@PostMapping("/controller/admin/feedback")
+	public String postFeedbackDetails(@ModelAttribute User user,HttpSession session,Model model) {
+			if(session.getAttribute("adminlogin")==null) {
+				return "AdminLogin";
+			}
+		
+			userService.updateUserDetail(user);
+		
+		return "redirect:/controller/admin/applicationMessage";
+	}
+	
+	
+}
 //	@GetMapping("/controller/admin/add")
 //	public String addMoreDetail(HttpSession session) {
 //		if(session.getAttribute("adminlogin")==null) {
@@ -138,4 +193,4 @@ public class AdminController {
 //		studentService.addStudentDetail(student);
 //		return "redirect:/controller/admin/studentDetail";
 //	}
-}
+

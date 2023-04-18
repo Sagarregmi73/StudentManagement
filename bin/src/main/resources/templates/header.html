@@ -1,5 +1,5 @@
 <!doctype html>
-<html  lang="en">
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
   <head>
     <title>Blog</title>
     <meta charset="utf-8">
@@ -22,8 +22,8 @@
     
     <header role="banner">
      
-      <nav class="navbar navbar-expand-md navbar-dark bg-light">
-        <div class="container">
+      <nav class="navbar navbar-expand-md navbar-dark bg-light" >
+        <div class="container"  >
           <a class="navbar-brand absolute" href="/home">UCMS</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -60,20 +60,18 @@
                 <li class="nav-item">
                 <a class="nav-link" href="/blog">Blog</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/addStudentDetail">AddStudentDetail</a>
-              </li>
+             
               <li class="nav-item">
                 <a class="nav-link" href="/notification">Notification</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/fees">Fees</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/profile">Profile</a>
+              <li class="nav-item"  >
+                <a class="nav-link"  th:href="@{/profile(id=${session.activeuser.id})}">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/applyApplication">Apply Application</a>
+                <a class="nav-link" th:href="@{/applyApplication(id=${session.activeuser.id})}">Apply Application</a>
               </li>
             </ul>
              <ul class="navbar-nav absolute-right">

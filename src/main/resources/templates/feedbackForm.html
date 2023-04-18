@@ -1,7 +1,8 @@
+
 <!doctype html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
-<title>Student Details</title>
+<title>Feedback Form</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,21 +24,6 @@
 
 <!-- Theme Style -->
 <link rel="stylesheet" href="/masterlogin/css/style.css">
-<!-- CDN for Data Table start -->
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-
-<!-- CDN for Data Table End -->
-<!-- font-awesome -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-	integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
 </head>
 <body>
 
@@ -82,13 +68,12 @@
 							</div></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/controller/admin/profile">Admin Profile</a></li>
-					
 						
-						<li class="nav-item"><a class="nav-link"
-							href="/controller/admin/applicationMessage">Application
+
+						<li class="nav-item"><a class="nav-link" href="/controller/admin/applicationMessage">Application
 								Message</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="#">Student Details</a></li>
+							href="/controller/admin/studentDetail">Student Details</a></li>
 
 
 
@@ -114,56 +99,204 @@
 				<div class="col-md-8 text-center">
 
 					<div class="mb-5 element-animate">
-						<h1>Student Details</h1>
-						<br>
+						<h1>Feedback Form</h1>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- END section -->
 
 	<section class="site-section bg-light">
 		<div class="container">
-			
-				
+			<div class="row justify-content-center">
+				<div class="col-md-5 box">
 					<h2 class="mb-5">Student Details</h2>
 
-					<div><table  id=stuTable class="table table-striped">
 
-						<thead>
-							<tr>
-								<td>S_No</td>
-								<td>Student Name</td>
-								<td>User ID</td>
-								<td>Email</td>
-								<td>Action</td>
-							</tr>
-						</thead>
+					<form action="/controller/admin/feedback" method="post"
+						th:object="${userObj}">
 
-						<tr th:each="usr:${userlist}" >
-							<td>[[${usr.id}]]</td>
-							<td>[[${usr.fname+" "}]][[${usr.lname}]]</td>
-							<td th:text="${usr.username}"></td>
-							<td th:text="${usr.emailId}"></td>
+						<div class="row">
 
-							<td ><a th:href="@{/controller/admin/edit(id=${usr.id})}"><i
-									class="fa-solid fa-pen-to-square"></i></a> <a
-								th:href="@{'/controller/admin/delete/'+${usr.id}}"><i
-									class="fa-solid fa-trash"></i></a>
-									
-									</td>
-									
-						</tr>
+					<div class="col-md-12 form-group">
+								<label for="fname">First Name</label> <input type="text"
+									id="fname" required th:field="*{fname}"
+									class="form-control ">
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="lname">Last Name</label> <input type="text"
+									id="lname" required th:field="*{lname}"
+									class="form-control ">
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="username">Username</label> <input type="text"
+									id="username" required th:field="*{username}"
+									class="form-control ">
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="password">Password</label> <input type="text"
+									id="password" readonly th:field="*{password}"
+									class="form-control ">
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="emailId">Email</label> <input type="text"
+									id="emailId" required th:field="*{emailId}"
+									class="form-control ">
+							</div>
 
-						</tbody>
-					</table>
-					</div>
-				</div>
-			
-		
+							<div class="col-md-12 form-group">
+								<label for="fathername">Father Name</label> <input type="text"
+									id="fathername" required th:field="*{student.fathername}"
+									class="form-control ">
+							</div>
+
+
+
+							<div class="col-md-12 form-group">
+								<label for="phone">Phone</label> <input type="number" id="phone"
+									required th:field="*{student.phone}" class="form-control ">
+
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<input type="radio" th:field="*{student.gender}" value="male">Male
+								<input type="radio" th:field="*{student.gender}" value="female">Female
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<label for="department">Department</label> <input type="text"
+									required th:field="*{student.department}" class="form-control">
+
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<label for="dob">DOB</label> <input type="date" required
+									th:field="*{student.dob}" class="form-control">
+
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<label for="joindate">JoinDate</label> <input type="date"
+									required th:field="*{student.joindate}" class="form-control">
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<label for="country">Country</label> <input type="text"
+									id="country" required th:field="*{student.address.country}"
+									class="form-control ">
+
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<label for="city">City</label> <input type="text" id="city"
+									required th:field="*{student.address.city}"
+									class="form-control ">
+
+							</div>
+
+
+
+							<div class="col-md-12 form-group">
+								<label for="state">State</label> <input type="text" id="state"
+									required th:field="*{student.address.state}"
+									class="form-control ">
+							</div>
+
+
+
+
+							<div class="col-md-12 form-group">
+								<label for="zipcode">ZipCode</label> <input type="number"
+									id="zipcode" required th:field="*{student.address.zipCode}"
+									class="form-control ">
+
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="messageFeedback">Message</label> <textarea 
+									 readonly th:field="*{student.messageFeedback.message}" rows="10" cols="10"
+									class="form-control "></textarea>
+
+							</div>
+									<div class="col-md-12 form-group">
+								<label for="applyDate">Message</label> <input type="text"
+									id="applyDate" readonly th:field="*{student.messageFeedback.applyDate}"
+									class="form-control ">
+
+							</div>
+							<div class="col-md-12 form-group">
+								<label for="Applicationref">ApplicationrefId</label> <input type="text"
+									id="Applicationref" readonly th:field="*{student.messageFeedback.applicationRef}"
+									class="form-control ">
+
+							</div>
+							
+							 	<div class="col-md-12 form-group">
+								<label for="courseDuration">Course Duration</label> <input type="text"
+									required th:field="*{student.courseDuration}" class="form-control">
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<label for="courseFee">Course Fee</label> <input type="number"
+									id="courseFee" required th:field="*{student.courseFee}"
+									class="form-control ">
+
+							</div>
+
+							<div class="col-md-12 form-group">
+								<label for="feeDue">Fee Due</label> <input type="number"
+									id="feeDue" required th:field="*{student.feeDue}"
+									class="form-control ">
+
+							</div>
+
+
+							<div class="col-md-12 form-group">
+								<label for="fineDue">Fine Due</label> <input type="number" id="fineDue"
+									required th:field="*{student.fineDue}"
+									class="form-control ">
+
+							</div>
+
+
+
+
+							<div class="col-md-12 form-group">
+								<label for="semister">Semister</label> <input type="number"
+									id="semister" required th:field="*{student.semister}"
+									class="form-control ">
+
+							</div>
+
+
+							<div class="col-md-6 form-group">
+								<input type="submit" value="update" class="btn btn-primary">
+							</div>
+
+							<input type="hidden" th:field="*{id}" /> <input type="hidden"
+								th:field="*{student.address.id}" /> 
+								<input type="hidden"
+								th:field="*{student.messageFeedback.id}" /> 
+								<input type="hidden"
+								th:field="*{student.id}" /> 
+
+
+						</div>
+				
+				</form>
+
+			</div>
+		</div>
+		</div>
 	</section>
 	<!-- END section -->
+
 	<footer class="site-footer"
 		style="background-image: url(/masterlogin/images/big_image_3.jpg);">
 		<div class="container">
@@ -245,12 +378,9 @@
 
 
 	<script src="/masterlogin/js/main.js"></script>
-
-	<!-- js for showing table data -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#stuTable').DataTable();
-		});
-	</script>
 </body>
 </html>
+
+
+
+

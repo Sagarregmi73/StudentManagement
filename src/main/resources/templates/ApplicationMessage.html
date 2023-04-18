@@ -1,7 +1,9 @@
+
+
 <!doctype html>
 <html lang="en">
 <head>
-<title>AdminDashboard</title>
+<title>Application Message</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,6 +22,19 @@
 	href="/masterlogin/fonts/fontawesome/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="/masterlogin/fonts/flaticon/font/flaticon.css">
+<!-- CDN for Data Table start -->
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+<!-- CDN for Data Table End -->
+<!-- font-awesome -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+	integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!-- Theme Style -->
 <link rel="stylesheet" href="/masterlogin/css/style.css">
@@ -30,7 +45,7 @@
 
 		<nav class="navbar navbar-expand-md navbar-dark bg-light">
 			<div class="container">
-				<a class="navbar-brand absolute" href="#">UCMS</a>
+				<a class="navbar-brand absolute" href="/controller/login/admin">UCMS</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarsExample05" aria-controls="navbarsExample05"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +55,7 @@
 				<div class="collapse navbar-collapse navbar-light"
 					id="navbarsExample05">
 					<ul class="navbar-nav mx-auto">
-						<li class="nav-item"><a class="nav-link active" href="#">Home</a>
+						<li class="nav-item"><a class="nav-link active" href="/controller/login/admin">Home</a>
 						</li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="courses.html"
@@ -67,10 +82,10 @@
 							</div></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/controller/admin/profile">Admin Profile</a></li>
-
+						
 
 						<li class="nav-item"><a class="nav-link"
-							href="/controller/admin/applicationMessage">Application
+							href="#">Application
 								Message</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/controller/admin/studentDetail">Student Details</a></li>
@@ -90,25 +105,54 @@
 	</header>
 	<!-- END header -->
 
-	<section class="site-hero overlay" data-stellar-background-ratio="0.5"
-		style="background-image: url(/masterlogin/images/big_image_1.jpg);">
+  <section class="site-hero site-hero-innerpage overlay"
+		data-stellar-background-ratio="0.5"
+		style="background-image: url(images/big_image_1.jpg);">
 		<div class="container">
 			<div
 				class="row align-items-center site-hero-inner justify-content-center">
 				<div class="col-md-8 text-center">
 
 					<div class="mb-5 element-animate">
-						<h1>Learn From Doing</h1>
-						<p class="lead">Learn something new every day with skwela
-							lorem ipsum dolor sit amet.</p>
-						<p>
-							<a href="#" class="btn btn-primary">Sign up and get a 7-day
-								free trial</a>
-						</p>
+						<h1>Application Messages</h1>
+						<br>
 					</div>
-
-
 				</div>
+			</div>
+		</div>
+	</section>
+	<!-- END section -->
+    <!-- END section -->
+	<section class="site-section bg-light">
+		<div class="container">
+
+			<div>
+				<h2 class="mb-5">Application Message</h2>
+				<h5 style="color: green;">[[${message}]]</h5>
+				<table id="appTable" class="table table-striped">
+
+					<thead>
+						<tr>
+							<td>S_Id</td>
+							<td>Application RefId</td>
+							<td>message</td>
+							<td>Apply Date</td>
+							<td>Action</td>
+						</tr>
+					</thead>
+
+					<tr th:each="mes:${messageObjList}">
+						<td>[[${mes.id}]]</td>
+						<td th:text="${mes.applicationRef}">
+						<td th:text="${mes.message}"></td>
+						<td th:text="${mes.applyDate}"></td>
+						<td><a th:href="@{/controller/admin/feedback(id=${mes.id})}">Feedback</a></td>
+						<td>
+					</tr>
+
+					</tbody>
+				</table>
+
 			</div>
 		</div>
 	</section>
@@ -196,5 +240,11 @@
 
 
 	<script src="/masterlogin/js/main.js"></script>
+	<!-- js for showing table data -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#appTable').DataTable();
+		});
+	</script>
 </body>
 </html>

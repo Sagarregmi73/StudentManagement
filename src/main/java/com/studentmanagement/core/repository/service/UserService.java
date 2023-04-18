@@ -10,7 +10,7 @@ public interface UserService {
 void userSignup(User user);
 User userLogin(String username,String password);
 List <User> getUser();
-
+void updateUserDetail(User user);
 User getUserById(int id);
 
 }

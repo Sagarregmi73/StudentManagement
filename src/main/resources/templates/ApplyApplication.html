@@ -26,17 +26,31 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-5 box">
+         
             <h2 class="mb-5">Apply Application</h2>
                     <h5 style="color:green;">[[${message}]]</h5>
-            <form action="/applyApplication" method="post" >
+            <form action="/applyApplication" method="post" th:object="${messageListObj}">
                   <div class="row">
                     <div class="col-md-12 form-group">
                       <label for="message">Message</label>
-                      <textarea rows="5" cols="30" required name="message" class="form-control "></textarea>
+                      <textarea rows="5" cols="30" required  name="message" class="form-control "></textarea>
                       
                     </div>
                   </div>
-                  
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="applyDate">Apply Date</label>
+                      <input type="date" required  name="applyDate" class="form-control " />
+                      
+                    </div>
+                  </div>
+                   <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="applicationref">ApplicationRefId</label>
+                      <input type="text" readonly  th:field="*{applicationRef}" class="form-control " />
+                      
+                    </div>
+                  </div>
                  
                   
                   <div class="row">
@@ -45,7 +59,10 @@
                     </div>
                      
                   </div>
+                <input type="hidden" th:field="*{id}" />
+                  
                 </form>
+                
           </div>
         </div>
       </div>

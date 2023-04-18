@@ -1,4 +1,10 @@
+
 package com.studentmanagement.core.controller;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,11 +15,15 @@ import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.studentmanagement.core.model.User;
+
 import com.studentmanagement.core.repository.StudentRepository;
 
 import com.studentmanagement.core.repository.service.UserService;
+import com.studentmanagement.core.utils.VerifyRecaptcha;
 
 @Controller
 public class UserController {
@@ -21,6 +31,7 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private StudentRepository studentRepo;
+	
 	@GetMapping("/")
 	public String getIndex() {
 		return "index";
@@ -33,7 +44,9 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public String postLogin(@ModelAttribute User user,Model model,HttpSession session) {
+	public String postLogin(@ModelAttribute User user,Model model,HttpSession session,@RequestParam("g-recaptcha-response") String recaptchaCode) throws IOException {
+		if(VerifyRecaptcha.verify(recaptchaCode)) {
+			
 		
 		user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
 		User usr=userService.userLogin(user.getUsername(),user.getPassword());
@@ -43,8 +56,12 @@ public class UserController {
 			session.setMaxInactiveInterval(200);
 			
 			return "Home";
+		}else {
+			model.addAttribute("message","invalid username!");
+			return "Login";	
 		}
-		model.addAttribute("message","invalid username!");
+		}
+		model.addAttribute("message","Are you Robot!");
 		return "Login";
 	}
 	@GetMapping("/signup")
@@ -68,7 +85,6 @@ public class UserController {
 		session.invalidate();
 		return "index";
 	}
+
 	
-	
-	//usercontroller has updated
 }

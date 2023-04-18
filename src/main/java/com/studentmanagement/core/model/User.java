@@ -27,7 +27,6 @@ public class User {
 	@JoinColumn(name="student_tbl")
 	private Student student;
 	
-
 	public int getId() {
 		return id;
 	}

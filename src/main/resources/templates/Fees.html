@@ -20,6 +20,56 @@
         </div>
       </div>
     </section>
+    <section class="site-section bg-light" th:each="usr:${userObjList}">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-5 box">
+					<h2 class="mb-5">More Details</h2>
+
+				
+				<div class="row m-2">
+					<div class="col-4">courseDuration</div>
+					<div class="col-6">
+						[[${usr.student.courseDuration}]]
+					
+				</div>
+				</div>
+				<div class="row m-2">
+					<div class="col-4">courseFee</div>
+					<div class="col-6">
+						[[${usr.student.courseFee}]]
+					
+				</div>
+				</div>
+				<div class="row m-2">
+					<div class="col-4">feeDue</div>
+					<div class="col-6">
+						[[${usr.student.feeDue}]]
+					
+				</div>
+				</div>
+				<div class="row m-2">
+					<div class="col-4">fineDue</div>
+					<div class="col-6">
+						[[${usr.student.fineDue}]]
+					
+				</div>
+				</div>
+				<div class="row m-2">
+					<div class="col-4">semister</div>
+					<div class="col-6">
+						[[${usr.student.semister}]]
+					
+				
+				</div>
+				</div>
+				
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	
     <!-- END section -->
     <div th:insert="footer.html" ></div>
    

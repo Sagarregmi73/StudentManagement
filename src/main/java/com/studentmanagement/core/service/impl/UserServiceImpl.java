@@ -40,6 +40,12 @@ public class UserServiceImpl implements UserService {
 		return userRepo.getById(id);
 	}
 
+	@Override
+	public void updateUserDetail(User user) {
+		// TODO Auto-generated method stub
+		userRepo.save(user);
+	}
+
 
 
 	

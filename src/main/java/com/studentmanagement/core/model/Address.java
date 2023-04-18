@@ -19,6 +19,12 @@ public class Address {
 	public int getId() {
 		return id;
 	}
+	public String getZipCode() {
+		return zipCode;
+	}
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -40,11 +46,6 @@ public class Address {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public String getZipCode() {
-		return zipCode;
-	}
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
+
 	
 }

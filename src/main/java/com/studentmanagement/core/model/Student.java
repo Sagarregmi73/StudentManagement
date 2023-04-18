@@ -1,6 +1,7 @@
 package com.studentmanagement.core.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,7 +24,6 @@ private String fathername;
 
 private String phone;
 private String gender;
-private String department;
 @DateTimeFormat(pattern = "yyyy-MM-dd")
 private LocalDate dob;
 @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -30,20 +31,23 @@ private LocalDate joindate;
 @OneToOne(cascade = CascadeType.ALL)
 @JoinColumn(name="address_tbl")
 private Address address;
+
+private String department;
+
 @OneToOne(cascade = CascadeType.ALL)
-@JoinColumn(name="Application_tbl")
-private Applyapplication applyapplication;
+@JoinColumn(name="message_tbl")
+private MessageFeedback messageFeedback;
+private double courseFee;
+private double fineDue;
+private String courseDuration;
+private int semister;
 
+private double feeDue;
 
-public Applyapplication getApplyapplication() {
-	return applyapplication;
-}
-public void setApplyapplication(Applyapplication applyapplication) {
-	this.applyapplication = applyapplication;
-}
 public int getId() {
 	return id;
 }
+
 public void setId(int id) {
 	this.id = id;
 }
@@ -65,12 +69,7 @@ public String getGender() {
 public void setGender(String gender) {
 	this.gender = gender;
 }
-public String getDepartment() {
-	return department;
-}
-public void setDepartment(String department) {
-	this.department = department;
-}
+
 public LocalDate getDob() {
 	return dob;
 }
@@ -90,6 +89,63 @@ public void setAddress(Address address) {
 	this.address = address;
 }
 
+
+public String getDepartment() {
+	return department;
+}
+
+public void setDepartment(String department) {
+	this.department = department;
+}
+
+public MessageFeedback getMessageFeedback() {
+	return messageFeedback;
+}
+
+
+
+public void setMessageFeedback(MessageFeedback messageFeedback) {
+	this.messageFeedback = messageFeedback;
+}
+public double getCourseFee() {
+	return courseFee;
+}
+
+public void setCourseFee(double courseFee) {
+	this.courseFee = courseFee;
+}
+
+public double getFineDue() {
+	return fineDue;
+}
+
+public void setFineDue(double fineDue) {
+	this.fineDue = fineDue;
+}
+
+public String getCourseDuration() {
+	return courseDuration;
+}
+
+public void setCourseDuration(String courseDuration) {
+	this.courseDuration = courseDuration;
+}
+
+public int getSemister() {
+	return semister;
+}
+
+public void setSemister(int semister) {
+	this.semister = semister;
+}
+
+public double getFeeDue() {
+	return feeDue;
+}
+
+public void setFeeDue(double feeDue) {
+	this.feeDue = feeDue;
+}
 
 
 }

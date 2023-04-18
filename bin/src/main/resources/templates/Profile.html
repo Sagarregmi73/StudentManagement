@@ -20,17 +20,51 @@
         </div>
       </div>
     </section>
-     
-    <section class="site-section bg-light" th:each="stu:${stuDetails}">
+     <section class="site-section bg-light" >
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-5 box">
 					<h2 class="mb-5">Student Details</h2>
 
 					<div class="row m-2">
+					<div class="col-4">FullName</div>
+					<div class="col-6">
+						[[${session.activeuser.fname+" "}]][[${session.activeuser.lname}]]
+					
+				</div>
+				</div>
+				
+				<div class="row m-2">
+					<div class="col-4">UserName</div>
+					<div class="col-6">
+						[[${session.activeuser.username}]]
+					
+				</div>
+				</div>
+				
+				<div class="row m-2">
+					<div class="col-4">Email</div>
+					<div class="col-6">
+						[[${session.activeuser.emailId}]]
+					
+				</div>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+		
+			<section class="site-section bg-light" th:each="usr:${userObjList}">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-5 box">
+					<h2 class="mb-5">More Details</h2>
+
+					<div class="row m-2">
 					<div class="col-4">FatherName</div>
 					<div class="col-6">
-						[[${stu.fathername}]]
+						[[${usr.student.fathername}]]
 					
 				</div>
 				</div>
@@ -38,7 +72,7 @@
 				<div class="row m-2">
 					<div class="col-4">Phone</div>
 					<div class="col-6">
-						[[${stu.phone}]]
+						[[${usr.student.phone}]]
 					
 				</div>
 				</div>
@@ -46,7 +80,7 @@
 				<div class="row m-2">
 					<div class="col-4">Gender</div>
 					<div class="col-6">
-						[[${stu.gender}]]
+						[[${usr.student.gender}]]
 					
 				</div>
 				</div>
@@ -54,7 +88,7 @@
 				<div class="row m-2">
 					<div class="col-4">Department</div>
 					<div class="col-6">
-						[[${stu.department}]]
+						[[${usr.student.department}]]
 					
 				</div>
 				</div>
@@ -62,7 +96,7 @@
 				<div class="row m-2">
 					<div class="col-4">DOB</div>
 					<div class="col-6">
-						[[${stu.dob}]]
+						[[${usr.student.dob}]]
 					
 				</div>
 				</div>
@@ -70,7 +104,7 @@
 				<div class="row m-2">
 					<div class="col-4">JoinDate</div>
 					<div class="col-6">
-						[[${stu.joindate}]]
+						[[${usr.student.joindate}]]
 					
 				</div>
 				</div>
@@ -78,7 +112,7 @@
 				<div class="row m-2">
 					<div class="col-4">Country</div>
 					<div class="col-6">
-						[[${stu.address.country}]]
+						[[${usr.student.address.country}]]
 					
 				</div>
 				</div>
@@ -86,7 +120,7 @@
 				<div class="row m-2">
 					<div class="col-4">City</div>
 					<div class="col-6">
-						[[${stu.address.city}]]
+						[[${usr.student.address.city}]]
 					
 				</div>
 				</div>
@@ -94,7 +128,7 @@
 				<div class="row m-2">
 					<div class="col-4">State</div>
 					<div class="col-6">
-						[[${stu.address.state}]]
+						[[${usr.student.address.state}]]
 					
 				</div>
 				</div>
@@ -102,7 +136,7 @@
 				<div class="row m-2">
 					<div class="col-4">ZipCode</div>
 					<div class="col-6">
-						[[${stu.address.zipCode}]]
+						[[${usr.student.address.zipCode}]]
 					
 				</div>
 				</div>
@@ -110,6 +144,9 @@
 			</div>
 		</div>
 	</section>
+	
+	</section>
+    
     <!-- END section -->
     <div th:insert="footer.html" ></div>
    
