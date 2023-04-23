@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.studentmanagement.core.model.Student;
 import com.studentmanagement.core.model.User;
 
 import com.studentmanagement.core.repository.StudentRepository;
@@ -71,10 +72,32 @@ public class UserController {
 	}
 	
 	@PostMapping("/signup")
-	public String postSignup(@ModelAttribute User user , Model model) {
+	public String postSignup(@ModelAttribute User user,@ModelAttribute Student student, Model model,MultipartFile image) {
+	student.getUser().setImageProfile(image.getOriginalFilename());
+		   //user.setImageProfile(image.getOriginalFilename());
+//student.setUser(user);
+student.getUser().setPassword(DigestUtils.md5DigestAsHex(student.getUser().getPassword().getBytes()));
+//user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
+//	
+//			userService.userSignup(user);
+			studentRepo.save(student);
 		
-			user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
-			userService.userSignup(user);
+			
+			
+			if(!image.isEmpty()) {
+//				//image size validation
+//				if(image.getSize()>=2097152) {
+//					model.addAttribute("message","File size is to large.Max size is 2MB");
+//					return "UploadForm";
+//				}
+				try {
+					Files.copy(image.getInputStream(),Path.of("src/main/resources/static/image/"+image.getOriginalFilename()),StandardCopyOption.REPLACE_EXISTING );
+				
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 			
 			return "Login";
 			
@@ -86,5 +109,8 @@ public class UserController {
 		return "index";
 	}
 
+	
+	
+	
 	
 }

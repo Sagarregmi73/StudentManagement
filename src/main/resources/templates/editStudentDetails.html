@@ -80,7 +80,7 @@
 
 					</ul>
 					<ul class="navbar-nav absolute-right">
-						<li class="nav-item"><a href="/logout" class="nav-link">Logout</a>
+						<li class="nav-item"><a href="/logout" class="nav-link"><span>[[${session.adminlogin}]] </span>|Logout</a>
 						</li>
 
 					</ul>
@@ -115,37 +115,43 @@
 
 
 					<form action="/controller/admin/updateStudentDetail" method="post"
-						th:object="${userObjList}">
+						th:object="${studentObjList}">
 
 						<div class="row">
 
 							<div class="col-md-12 form-group">
 								<label for="fname">First Name</label> <input type="text"
-									id="fname" required th:field="*{fname}" class="form-control ">
+									id="fname" required th:field="*{user.fname}" class="form-control ">
 							</div>
 							<div class="col-md-12 form-group">
 								<label for="lname">Last Name</label> <input type="text"
-									id="lname" required th:field="*{lname}" class="form-control ">
+									id="lname" required th:field="*{user.lname}" class="form-control ">
 							</div>
 							<div class="col-md-12 form-group">
 								<label for="username">Username</label> <input type="text"
-									id="username" required th:field="*{username}"
+									id="username" required th:field="*{user.username}"
 									class="form-control ">
 							</div>
-							<div class="col-md-12 form-group">
+							<div class="col-md-12 form-group" >
 								<label for="password">Password</label> <input type="text"
-									id="password" readonly th:field="*{password}"
+									id="password" readonly th:field="*{user.password}"
 									class="form-control ">
 							</div>
 							<div class="col-md-12 form-group">
 								<label for="emailId">Email</label> <input type="text"
-									id="emailId" required th:field="*{emailId}"
+									id="emailId" required th:field="*{user.emailId}"
+									class="form-control ">
+							</div>
+
+							<div class="col-md-12 form-group">
+								<label for="image">Profile Image</label> <input type="text"
+									id="image" readonly th:field="*{user.imageProfile}"
 									class="form-control ">
 							</div>
 
 							<div class="col-md-12 form-group">
 								<label for="fathername">Father Name</label> <input type="text"
-									id="fathername" required th:field="*{student.fathername}"
+									id="fathername" required th:field="*{fathername}"
 									class="form-control ">
 							</div>
 
@@ -153,14 +159,14 @@
 
 							<div class="col-md-12 form-group">
 								<label for="phone">Phone</label> <input type="number" id="phone"
-									required th:field="*{student.phone}" class="form-control ">
+									required th:field="*{phone}" class="form-control ">
 
 							</div>
 
 
 							<div class="col-md-12 form-group">
-								<input type="radio" th:field="*{student.gender}" value="male">Male
-								<input type="radio" th:field="*{student.gender}" value="female">Female
+								<input type="radio" th:field="*{gender}" value="male">Male
+								<input type="radio" th:field="*{gender}" value="female">Female
 							</div>
 
 
@@ -168,24 +174,24 @@
 
 							<div class="col-md-12 form-group">
 								<label for="dob">DOB</label> <input type="date" required
-									th:field="*{student.dob}" class="form-control">
+									th:field="*{dob}" class="form-control">
 
 							</div>
 							<div class="col-md-12 form-group">
 								<label for="department">Department</label> <input type="text"
-									required th:field="*{student.department}" class="form-control">
+									required th:field="*{department}" class="form-control">
 
 							</div>
 
 							<div class="col-md-12 form-group">
 								<label for="joindate">JoinDate</label> <input type="date"
-									required th:field="*{student.joindate}" class="form-control">
+									required th:field="*{joindate}" class="form-control">
 							</div>
 
 
 							<div class="col-md-12 form-group">
 								<label for="country">Country</label> <input type="text"
-									id="country" required th:field="*{student.address.country}"
+									id="country" required th:field="*{address.country}"
 									class="form-control ">
 
 							</div>
@@ -193,7 +199,7 @@
 
 							<div class="col-md-12 form-group">
 								<label for="city">City</label> <input type="text" id="city"
-									required th:field="*{student.address.city}"
+									required th:field="*{address.city}"
 									class="form-control ">
 
 							</div>
@@ -203,7 +209,7 @@
 
 							<div class="col-md-12 form-group">
 								<label for="state">State</label> <input type="text" id="state"
-									required th:field="*{student.address.state}"
+									required th:field="*{address.state}"
 									class="form-control ">
 							</div>
 
@@ -212,34 +218,34 @@
 
 							<div class="col-md-12 form-group">
 								<label for="zipcode">ZipCode</label> <input type="number"
-									id="zipcode" required th:field="*{student.address.zipCode}"
+									id="zipcode" required th:field="*{address.zipCode}"
 									class="form-control ">
 
 							</div>
 							<div class="col-md-12 form-group">
 								<label for="applicationRef">ApplicationRefId</label> <input
 									type="text" id="applicationRef" required
-									th:field="*{student.messageFeedback.applicationRef}"
+									th:field="*{messageFeedback.applicationRef}"
 									class="form-control ">
 
 							</div>
 
 							<div class="col-md-12 form-group">
 								<label for="courseDuration">Course Duration</label> <input type="text"
-									required th:field="*{student.courseDuration}" class="form-control">
+									required th:field="*{courseDuration}" class="form-control">
 							</div>
 
 
 							<div class="col-md-12 form-group">
 								<label for="courseFee">Course Fee</label> <input type="number"
-									id="courseFee" required th:field="*{student.courseFee}"
+									id="courseFee" required th:field="*{courseFee}"
 									class="form-control ">
 
 							</div>
 
 							<div class="col-md-12 form-group">
 								<label for="feeDue">Fee Due</label> <input type="number"
-									id="feeDue" required th:field="*{student.feeDue}"
+									id="feeDue" required th:field="*{feeDue}"
 									class="form-control ">
 
 							</div>
@@ -247,7 +253,7 @@
 
 							<div class="col-md-12 form-group">
 								<label for="fineDue">Fine Due</label> <input type="number" id="fineDue"
-									required th:field="*{student.fineDue}"
+									required th:field="*{fineDue}"
 									class="form-control ">
 
 							</div>
@@ -257,7 +263,7 @@
 
 							<div class="col-md-12 form-group">
 								<label for="semister">Semister</label> <input type="number"
-									id="semister" required th:field="*{student.semister}"
+									id="semister" required th:field="*{semister}"
 									class="form-control ">
 
 							</div>
@@ -268,11 +274,14 @@
 							</div>
 
 							<input type="hidden" th:field="*{id}" /> <input type="hidden"
-								th:field="*{student.address.id}" /> <input type="hidden"
-								th:field="*{student.id}" />
+								th:field="*{address.id}" />
+								<input type="hidden"
+								th:field="*{user.id}" />
+								
+								 
 						
 								 <input type="hidden"
-								th:field="*{student.messageFeedback.id}" />
+								th:field="*{messageFeedback.id}" />
 
 
 

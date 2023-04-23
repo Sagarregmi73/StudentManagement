@@ -22,11 +22,17 @@ public class User {
 	private String username;
 	private String password;
 	private String emailId;
+	private String imageProfile;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="student_tbl")
-	private Student student;
 	
+	
+	
+	public String getImageProfile() {
+		return imageProfile;
+	}
+	public void setImageProfile(String imageProfile) {
+		this.imageProfile = imageProfile;
+	}
 	public int getId() {
 		return id;
 	}
@@ -63,12 +69,7 @@ public class User {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public Student getStudent() {
-		return student;
-	}
-	public void setStudent(Student student) {
-		this.student = student;
-	}
+
 	
 	
 	

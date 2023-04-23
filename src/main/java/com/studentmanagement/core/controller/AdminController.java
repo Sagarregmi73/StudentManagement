@@ -50,7 +50,7 @@ public class AdminController {
 
 			if (admin.matches("sagar007") && password.matches("980058")) {
 				
-				session.setAttribute("adminlogin", "logedin");
+				session.setAttribute("adminlogin", "sagar007");
 				session.setMaxInactiveInterval(200);
 				return "AdminDashboard";
 				
@@ -92,16 +92,17 @@ public class AdminController {
 			return "AdminLogin";
 		}
 		model.addAttribute("userlist",userService.getUser() );
+	
 		return "studentDetail";
 	}
 	
 	@PostMapping("/controller/admin/updateStudentDetail")
-	public String updateStudentDetail(@ModelAttribute User user,HttpSession session,Model model) {
+	public String updateStudentDetail(@ModelAttribute Student student,HttpSession session,Model model) {
 		if(session.getAttribute("adminlogin")== null ) {
 			return "AdminLogin";
 		}
 		//studentService.updateStudentDetail(student);
-		userRepo.save(user);
+		studentRepo.save(student);
 	//	model.addAttribute("message", "updated succesfully");
 		return "redirect:/controller/admin/studentDetail";
 	}
@@ -110,9 +111,10 @@ public class AdminController {
 		if(session.getAttribute("adminlogin")==null) {
 			return "AdminLogin";
 		}
-		userRepo.deleteById(id);
+		
+		
 		studentService.deleteStudentDetail(id);
-		messageService.deleteMessageFeedback(id);
+	//	messageService.deleteMessageFeedback(id);
 		
 		return "redirect:/controller/admin/studentDetail";
 	}
@@ -125,7 +127,7 @@ public class AdminController {
 		
 		model.addAttribute("userObjList",userService.getUserById(id));
 	
-//model.addAttribute("studentObjList", studentService.getStudentById(id));
+model.addAttribute("studentObjList", studentService.getStudentById(id));
 		return "editStudentDetails";
 	}
 
@@ -156,25 +158,25 @@ public String getFeedbackDetails(@RequestParam int id,HttpSession session,Model 
 		if(session.getAttribute("adminlogin")==null) {
 			return "AdminLogin";
 		}
-	model.addAttribute("userObj",userService.getUserById(id));
+		model.addAttribute("studentObjList", studentService.getStudentById(id));
 	
 	return "feedbackForm";
 }
 	
 	@PostMapping("/controller/admin/feedback")
-	public String postFeedbackDetails(@ModelAttribute User user,HttpSession session,Model model) {
+	public String postFeedbackDetails(@ModelAttribute Student student,HttpSession session,Model model) {
 			if(session.getAttribute("adminlogin")==null) {
 				return "AdminLogin";
 			}
 		
-			userService.updateUserDetail(user);
+			studentRepo.save(student);
 		
 		return "redirect:/controller/admin/applicationMessage";
 	}
 	
 	
 }
-//	@GetMapping("/controller/admin/add")
+//	@GetMapping("/controller/admin/addStudentDetail")
 //	public String addMoreDetail(HttpSession session) {
 //		if(session.getAttribute("adminlogin")==null) {
 //			return "AdminLogin";
@@ -184,7 +186,7 @@ public String getFeedbackDetails(@RequestParam int id,HttpSession session,Model 
 //	}
 //	
 //
-//	@PostMapping("/controller/admin/add")
+//	@PostMapping("/controller/admin/addStudentDetail")
 //	
 //	public String addMoreDetail(@ModelAttribute Student student,HttpSession session) {
 //		if(session.getAttribute("adminlogin")==null) {

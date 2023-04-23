@@ -74,7 +74,7 @@
             </ul>
             <ul class="navbar-nav absolute-right">
               <li class="nav-item">
-                <a href="/logout" class="nav-link">Logout</a>
+                <a href="/logout" class="nav-link"><span>[[${session.adminlogin}]] </span>|Logout</a>
               </li>
              
             </ul>
@@ -92,7 +92,8 @@
 
             <div class="mb-5 element-animate">
               <h1>Admin Profile</h1><br>
-              <h1 style="color:blue">[[${session.adminlogin}]]</h1>
+              <h1 style="color:blue">[[${session.adminlogin}]] is LoggedIn</h1>
+              
             </div>
           </div>
         </div>

@@ -94,7 +94,7 @@
 
 					</ul>
 					<ul class="navbar-nav absolute-right">
-						<li class="nav-item"><a href="/logout" class="nav-link">Logout</a>
+						<li class="nav-item"><a href="/logout" class="nav-link"><span>[[${session.adminlogin}]] </span>|Logout</a>
 						</li>
 
 					</ul>
@@ -152,7 +152,6 @@
 								th:href="@{'/controller/admin/delete/'+${usr.id}}"><i
 									class="fa-solid fa-trash"></i></a>
 									
-									</td>
 									
 						</tr>
 

@@ -20,7 +20,7 @@
         </div>
       </div>
     </section>
-    <section class="site-section bg-light" th:each="usr:${userObjList}">
+    <section class="site-section bg-light" th:each="stu:${stuDetails}">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-5 box">
@@ -30,35 +30,35 @@
 				<div class="row m-2">
 					<div class="col-4">courseDuration</div>
 					<div class="col-6">
-						[[${usr.student.courseDuration}]]
+						[[${stu.courseDuration}]]
 					
 				</div>
 				</div>
 				<div class="row m-2">
 					<div class="col-4">courseFee</div>
 					<div class="col-6">
-						[[${usr.student.courseFee}]]
+						[[${stu.courseFee}]]
 					
 				</div>
 				</div>
 				<div class="row m-2">
 					<div class="col-4">feeDue</div>
 					<div class="col-6">
-						[[${usr.student.feeDue}]]
+						[[${stu.feeDue}]]
 					
 				</div>
 				</div>
 				<div class="row m-2">
 					<div class="col-4">fineDue</div>
 					<div class="col-6">
-						[[${usr.student.fineDue}]]
+						[[${stu.fineDue}]]
 					
 				</div>
 				</div>
 				<div class="row m-2">
 					<div class="col-4">semister</div>
 					<div class="col-6">
-						[[${usr.student.semister}]]
+						[[${stu.semister}]]
 					
 				
 				</div>

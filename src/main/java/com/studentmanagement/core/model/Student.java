@@ -43,6 +43,17 @@ private String courseDuration;
 private int semister;
 
 private double feeDue;
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name="user_table")
+private User user;
+
+public User getUser() {
+	return user;
+}
+
+public void setUser(User user) {
+	this.user = user;
+}
 
 public int getId() {
 	return id;
@@ -146,6 +157,8 @@ public double getFeeDue() {
 public void setFeeDue(double feeDue) {
 	this.feeDue = feeDue;
 }
+
+
 
 
 }

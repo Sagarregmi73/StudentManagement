@@ -1,155 +1,132 @@
 <!doctype html>
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
-  <head>
-    <title>Profile</title>
-    <meta charset="utf-8">
-    
-  </head>
-  <body>
-    
-    <div th:insert="header.html" ></div>
-     <section class="site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5" style="background-image: url(images/big_image_1.jpg);">
-      <div class="container">
-        <div class="row align-items-center site-hero-inner justify-content-center">
-          <div class="col-md-8 text-center">
+<head>
+<title>Profile</title>
+<meta charset="utf-8">
 
-            <div class="mb-5 element-animate">
-              <h1>My Profile</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-     <section class="site-section bg-light" >
+</head>
+<body>
+
+	<div th:insert="header.html"></div>
+	<section class="site-hero site-hero-innerpage overlay"
+		data-stellar-background-ratio="0.5"
+		style="background-image: url(images/big_image_1.jpg);">
+		<div class="container">
+			<div
+				class="row align-items-center site-hero-inner justify-content-center">
+				<div class="col-md-8 text-center">
+
+					<div class="mb-5 element-animate">
+						<h1>My Profile</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="site-section bg-light" th:each="stu:${stuDetails}">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-5 box">
 					<h2 class="mb-5">Student Details</h2>
+					<div class="row m-2">
+						<div class="col-4">Profile</div>
+						<div class="col-6">
+							<img alt="profile" width="100px" height="100px"
+								th:src="@{'/image/'+${stu.user.imageProfile}}">
+						</div>
+						
+					</div>
+					
+				
+					
+				
+					
+					<div class="row m-2">
+						<div class="col-4">FullName</div>
+						<div class="col-6">[[${session.activeuser.fname+"
+							"}]][[${session.activeuser.lname}]]</div>
+					</div>
 
 					<div class="row m-2">
-					<div class="col-4">FullName</div>
-					<div class="col-6">
-						[[${session.activeuser.fname+" "}]][[${session.activeuser.lname}]]
-					
-				</div>
-				</div>
-				
-				<div class="row m-2">
-					<div class="col-4">UserName</div>
-					<div class="col-6">
-						[[${session.activeuser.username}]]
-					
-				</div>
-				</div>
-				
-				<div class="row m-2">
-					<div class="col-4">Email</div>
-					<div class="col-6">
-						[[${session.activeuser.emailId}]]
-					
-				</div>
-				</div>
-				
-			</div>
-			
-			
-		</div>
-		
-			<section class="site-section bg-light" th:each="usr:${stuDetails}">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-5 box">
-					<h2 class="mb-5">More Details</h2>
+						<div class="col-4">UserName</div>
+						<div class="col-6">[[${session.activeuser.username}]]</div>
+					</div>
 
 					<div class="row m-2">
-					<div class="col-4">FatherName</div>
-					<div class="col-6">
-						[[${usr.fathername}]]
+						<div class="col-4">Email</div>
+						<div class="col-6">[[${session.activeuser.emailId}]]</div>
+					</div>
 					
+
 				</div>
-				</div>
-				
-				<div class="row m-2">
-					<div class="col-4">Phone</div>
-					<div class="col-6">
-						[[${usr.phone}]]
-					
-				</div>
-				</div>
-				
-				<div class="row m-2">
-					<div class="col-4">Gender</div>
-					<div class="col-6">
-						[[${usr.gender}]]
-					
-				</div>
-				</div>
-				
-				<div class="row m-2">
-					<div class="col-4">Department</div>
-					<div class="col-6">
-						[[${usr.department}]]
-					
-				</div>
-				</div>
-				
-				<div class="row m-2">
-					<div class="col-4">DOB</div>
-					<div class="col-6">
-						[[${usr.dob}]]
-					
-				</div>
-				</div>
-				
-				<div class="row m-2">
-					<div class="col-4">JoinDate</div>
-					<div class="col-6">
-						[[${usr.joindate}]]
-					
-				</div>
-				</div>
-				
-				<div class="row m-2">
-					<div class="col-4">Country</div>
-					<div class="col-6">
-						[[${usr.address.country}]]
-					
-				</div>
-				</div>
-				
-				<div class="row m-2">
-					<div class="col-4">City</div>
-					<div class="col-6">
-						[[${usr.address.city}]]
-					
-				</div>
-				</div>
-				
-				<div class="row m-2">
-					<div class="col-4">State</div>
-					<div class="col-6">
-						[[${usr.address.state}]]
-					
-				</div>
-				</div>
-				
-				<div class="row m-2">
-					<div class="col-4">ZipCode</div>
-					<div class="col-6">
-						[[${usr.address.zipCode}]]
-					
-				</div>
-				</div>
-				</div>
+
+
 			</div>
 		</div>
+		<section class="site-section bg-light" th:each="stu:${stuDetails}">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-md-5 box">
+						<h2 class="mb-5">More Details</h2>
+
+						<div class="row m-2">
+							<div class="col-4">FatherName</div>
+							<div class="col-6">[[${stu.fathername}]]</div>
+						</div>
+
+						<div class="row m-2">
+							<div class="col-4">Phone</div>
+							<div class="col-6">[[${stu.phone}]]</div>
+						</div>
+
+						<div class="row m-2">
+							<div class="col-4">Gender</div>
+							<div class="col-6">[[${stu.gender}]]</div>
+						</div>
+
+						<div class="row m-2">
+							<div class="col-4">Department</div>
+							<div class="col-6">[[${stu.department}]]</div>
+						</div>
+
+						<div class="row m-2">
+							<div class="col-4">DOB</div>
+							<div class="col-6">[[${stu.dob}]]</div>
+						</div>
+
+						<div class="row m-2">
+							<div class="col-4">JoinDate</div>
+							<div class="col-6">[[${stu.joindate}]]</div>
+						</div>
+
+						<div class="row m-2">
+							<div class="col-4">Country</div>
+							<div class="col-6">[[${stu.address.country}]]</div>
+						</div>
+
+						<div class="row m-2">
+							<div class="col-4">City</div>
+							<div class="col-6">[[${stu.address.city}]]</div>
+						</div>
+
+						<div class="row m-2">
+							<div class="col-4">State</div>
+							<div class="col-6">[[${stu.address.state}]]</div>
+						</div>
+
+						<div class="row m-2">
+							<div class="col-4">ZipCode</div>
+							<div class="col-6">[[${stu.address.zipCode}]]</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	</section>
-	
-	</section>
-    
-    <!-- END section -->
-    <div th:insert="footer.html" ></div>
-   
-  </body>
+
+
+	<!-- END section -->
+	<div th:insert="footer.html"></div>
+</body>
 </html>
